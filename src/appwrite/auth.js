@@ -1,0 +1,63 @@
+import conf from "../conf/conf.js";
+import { Client,Account,ID } from "appwrite";
+
+export class AuthService{
+    client = new Client();
+    account;
+    constructor() {
+        this.client
+            .setEndpoint(conf.appwriteUrl)
+            .setProject(conf.appwriteProjectId);
+        this.account = new Account(this.client);    
+    }
+
+    async createAccount({ email,password,name}){
+          const userAccount =  await this.account.create(ID.unique(),email,password,name);
+          if(userAccount){
+            return this.login({email,password});
+            //call another method
+            
+          } else{
+            return userAccount;
+          }
+    }
+
+   // In src/appwrite/auth.js
+
+ 
+async login({email, password}) {
+        // 1. Force logout first to clear any stuck sessions
+        try {
+            await this.account.deleteSessions();
+        } catch (error) {
+            // If there was no session to delete, we just ignore this error
+            console.log("No active session to delete", error); 
+        }
+
+        // 2. Now it is safe to create a new session
+        return await this.account.createEmailPasswordSession(email, password);
+    }
+
+    async getCurrentUser(){
+      try {
+          return await this.account.get();
+      } catch (error) {
+        console.log("Appwrite service :: getCurrentUser :: error",error);
+        
+      }
+
+      return null;
+    }
+
+    async logout (){
+      try {
+        await this.account.deleteSessions();
+      } catch (error) {
+         console.log("Appwrite service :: logout :: error",error);
+      }
+    }
+}
+
+const authService = new AuthService();
+
+export default authService;
