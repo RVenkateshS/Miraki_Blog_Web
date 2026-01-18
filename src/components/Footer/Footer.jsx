@@ -12,20 +12,15 @@ function Footer() {
         setAnswer(""); 
 
         try {
-            const response = await fetch(
-                "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2",
-                {
-                    method: "POST",
-                    headers: {
-                        "Authorization": `Bearer ${import.meta.env.VITE_HUGGING_FACE_TOKEN}`,
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        inputs: `<s>[INST] You are a helpful assistant for the Miraki Blog. Answer this question concisely: ${query} [/INST]`,
-                        parameters: { max_new_tokens: 150, return_full_text: false }
-                    }),
-                }
-            );
+           const response = await fetch("/api/chat", {  // <--- Changed URL to your local API
+    method: "POST",
+    // headers: REMOVED (No need to send key anymore)
+    body: JSON.stringify({
+        // We keep the exact same inputs you had before
+        inputs: `<s>[INST] You are a helpful assistant for the Miraki Blog. Answer this question concisely: ${query} [/INST]`,
+        parameters: { max_new_tokens: 150, return_full_text: false }
+    }),
+});
             const data = await response.json();
             
             if (data.error && data.error.includes("loading")) {

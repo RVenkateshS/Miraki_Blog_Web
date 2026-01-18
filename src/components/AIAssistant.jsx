@@ -14,20 +14,19 @@ function AIAssistant() {
     setLoading(true);
     
     try {
-      const result = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${import.meta.env.VITE_HUGGING_FACE_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            inputs: `<s>[INST] You are a helpful assistant for the Miraki Blog. Answer this question briefly: ${query} [/INST]`,
-            parameters: {
-                max_new_tokens: 200, // Keeps answers short
-                return_full_text: false,
-            }
-        }),
-      });
+     // INSIDE AIAssistant.jsx
+
+const result = await fetch("/api/chat", {  // <--- Changed URL to your local API
+    method: "POST",
+    // headers: REMOVED
+    body: JSON.stringify({
+        inputs: `<s>[INST] You are a helpful assistant for the Miraki Blog. Answer this question briefly: ${query} [/INST]`,
+        parameters: {
+            max_new_tokens: 200,
+            return_full_text: false,
+        }
+    }),
+});
 
       const data = await result.json();
 
