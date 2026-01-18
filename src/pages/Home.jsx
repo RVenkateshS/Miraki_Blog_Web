@@ -3,7 +3,7 @@ import appwriteService from "../appwrite/config"
 import { Container, PostCard } from '../components'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import homePagePic from '../assets/HomePagePic.jpg'
+ 
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -73,7 +73,7 @@ function Home() {
                                     {/* IMAGE SECTION (Updated) */}
                                     <div className="h-2/3 w-full relative overflow-hidden group">
                                        <img 
-                                        src={homePagePic}  // <--- Use the variable inside curly braces
+                                        src="/HomePagePic.jpg"  // <--- Use the variable inside curly braces
                                         alt="Creative Workspace"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
 />
