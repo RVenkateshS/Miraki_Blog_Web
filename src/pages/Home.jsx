@@ -73,7 +73,7 @@ function Home() {
                                     {/* IMAGE SECTION (Updated) */}
                                     <div className="h-2/3 w-full relative overflow-hidden group">
                                        <img  
-                                        src="C:\Users\shash\OneDrive\Documents\React\BlogWEB\public\HomePagePic.jpg" 
+                                        src="/banner.jpg" 
                                         alt="Creative Workspace"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
