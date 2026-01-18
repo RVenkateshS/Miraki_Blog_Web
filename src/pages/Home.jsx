@@ -29,7 +29,7 @@ function Home() {
                 <Container>
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-12 z-10 relative">
                         
-                        {/* LEFT SIDE: Text & CTA */}
+                        
                         <div className="lg:w-1/2 text-center lg:text-left space-y-6">
                             <h1 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
                                 Where Ideas <br />
@@ -73,7 +73,7 @@ function Home() {
                                     {/* IMAGE SECTION (Updated) */}
                                     <div className="h-2/3 w-full relative overflow-hidden group">
                                        <img  
-                                        src="/HomePagePic.jpg" 
+                                        src="C:\Users\shash\OneDrive\Documents\React\BlogWEB\public\HomePagePic.jpg" 
                                         alt="Creative Workspace"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
