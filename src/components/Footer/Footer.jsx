@@ -87,7 +87,7 @@ function Footer() {
                          <div className="w-full max-w-lg h-px bg-gray-700 my-4 opacity-50 mx-auto"></div>
                     </div>
                 ) : (
-                    // OPTIONAL: Message for non-logged in users (Or leave empty)
+                    
                     <div className="mb-4 text-gray-500 text-xs italic">
                         Login to use the AI Assistant
                     </div>
